@@ -1,5 +1,3 @@
-# migo_test_eason_cheng
-
 ## Test Plan: 
 https://github.com/EasonCYS/migo_test_eason_cheng/blob/master/doc/test_plan.md
 
