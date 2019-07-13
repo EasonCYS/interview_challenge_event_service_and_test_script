@@ -1,6 +1,9 @@
 ## Event Service ##
 https://github.com/EasonCYS/migo_test_eason_cheng/tree/master/migo-event-service
 
+## DB Schema and Stored Procedures ##
+https://github.com/EasonCYS/migo_test_eason_cheng/tree/master/database
+
 ## Unit Test for Event Service ##
 https://github.com/EasonCYS/migo_test_eason_cheng/tree/master/migo-event-service/test
 
