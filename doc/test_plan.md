@@ -125,6 +125,7 @@ Gradually increase the traffic of incoming loading, monitor the response time an
 * Check system loading (cpu, memory, queue, etc) when loading back to normal.
 
 ## Security Test
+Refer to OWASP projects:
 * https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Web_Service_Security_Cheat_Sheet.md
 * https://github.com/OWASP/API-Security/blob/develop/2019/en/dist/owasp-api-security-top-10.pdf
 * https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/REST_Security_Cheat_Sheet.md
