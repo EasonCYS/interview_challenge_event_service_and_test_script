@@ -70,7 +70,7 @@ https://github.com/EasonCYS/migo_test_eason_cheng/tree/master/migo-event-service
 * The structure is the same as the source code of service app.
 * use ```pytest``` for both web app and db model test, ```pytest test/test_app.py``` for web app, or ```pytest test/db/test_event_db.py``` for db model.
 
-## Test Plan & Sample Test Cases: 
+## Test Plan & Test Spec: 
 https://github.com/EasonCYS/migo_test_eason_cheng/blob/master/doc/test_plan.md
 
 ## Jmeter Script: 
