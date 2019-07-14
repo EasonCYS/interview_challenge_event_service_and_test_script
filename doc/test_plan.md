@@ -2,51 +2,81 @@
 
 ## Funtional Test
 
-* Unit Test
+### Unit Test
   * Test get, set, create, and delete APIs via pre-defined data with expected results.
   * All fields should exist
   * Value of Category should be in pre-defined set. Follow requirement.
   * Test sort functions using pre-defined input and expected result.
-  * Boundary Test Cases: Data length > maximum; Data length =0 (empty)
-  * All sub-functions should write major test functions, such as sorting.
-  * No need to connect real db, use local storage instead
-  * Create
-    * Happy path
-    * Missing fields
-    * Invalid fields (data type, length, etc)
-  * Update Event
-    * Happy path
-    * Missing fields
-    * Broken data
-    * Invalid fields (data type, length, etc)
-  * Delete Event
-    * Happy path
-    * Broken data
-    * Non-exist events
+  * Connect real db to verify stored procedure integration.
+  * Call tear down functions after all test cases, make sure to clean all test data when finished.
   
-* API Test
+### API Test
   * Use Jmeter
   * Use pre-defined test data and expected result
   * Cover all test cases of unit test as possible
   * Prepare data by invoke api first, if unable to do that then insert db directly
   * Clean all test data after finished on test case
-  * Create event api
-    * Including same scope of unit test
-    * More test cases related to Event DB, such as duplicate, concurrency control, etc
-    * Security mechanism (authentication, authorization, etc)
-    * Get event list in the end to verify result
-  * Update event api
-    * Including same scope of unit test
-    * More test cases related to Event DB, such as duplicate, concurrency control, etc
-    * Security mechanism (authentication, authorization, etc)
-    * Get event list in the end to verify result
-  * Delete event api
-    * Including same scope of unit test
-    * More test cases related to Event DB, such as duplicate, concurrency control, etc
-    * Security mechanism (authentication, authorization, etc)
-    * Get event list in the end to verify result
+  * Authentication and authorization if user need to login first.
+
+#### Test Case Spec
+* Get event list api
+  * Success case
+    * Happy path: select event lists with several events belonged to user.
+    * No sort key, use default (missing key/value, or empty value)
+    * No specified order, use default (missing key/value, or empty value).
+    * No EndTimeRange, use default (missing key/value, or empty value).
+    * Sort by all columns with asc and desc
+    * User has no event
+    * User has large amount events
+    * Boundary test: all columns contain maximum data length.
+  * Error Case (should not create event and return pre-defined error then server works normally. No 5xx error.)
+    * User not exist
+    * Invalid input parameters (sory key, order, EndTimeRange)
+    * End time later than current time (return no data or pre-defined error)
+    
+* Create event api
+  * Success case
+    * Happy path: create one event with valid data.
+    * Concurrency control: create 2 events nearly at the same time, create successfully.
+    * No start time, use default
+    * No end time, use default.
+    * Boundary Test data for all fields.
+  * Error Case (should not create event and return pre-defined error then server works normally. No 5xx error.)
+    * Invalid referenced data: not exist category id.
+    * Missing key for required fields. (no key and no value)
+    * Empty value for required fileds. (no value)
+    * Invalid fields (data type, data length, etc)
+    * Boundary Test Cases: greater than maximum value or less than minimum value.
+    * User not exist
+
+* Update event api
+  * Success case
+    * Happy path: create one event then update with valid data.
+    * Concurrency control: update same event nearly at the same time, both update successfully.
+    * No start time, use default
+    * No end time, use default.
+    * Boundary Test data for all fields.
+  * Error Case (Should not update event. Return pre-defined error then server works normally. No 5xx error.)
+    * Not exist event id
+    * User not exist
+    * Event not belong to user
+    * Invalid referenced data: not exist category id.
+    * Missing key for required fields. (no key and no value)
+    * Empty value for required fileds. (no value)
+    * Invalid fields (data type, data length, etc)
+    * Boundary Test Cases: greater than maximum value or less than minimum value.
+    * Try to update deleted event.
 
 
+* Delete event api
+  * Success case
+    * Happy path: create one event then delete. Get event list should not contain it.
+    * Concurrency control: delete same event nearly at the same time, delete successfully and return event not exist for 2nd request.
+  * Error Case (Should not update event. Return pre-defined error then server works normally. No 5xx error.)
+    * Not exist event id
+    * User not exist
+    * Event not belong to user
+    
 ## Performance Test
 
 * Leverage the function testing script implemented by jmeter.
