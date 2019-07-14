@@ -33,6 +33,7 @@
     * User not exist
     * Invalid input parameters (sory key, order, EndTimeRange)
     * End time later than current time (return no data or pre-defined error)
+    * SQL injection test for all input parameters
     
 * Create event api
   * Success case
@@ -41,6 +42,7 @@
     * No start time, use default
     * No end time, use default.
     * Boundary Test data for all fields.
+    * SQL injection test for input parameters
   * Error Case (should not create event and return pre-defined error then server works normally. No 5xx error.)
     * Invalid referenced data: not exist category id.
     * Missing key for required fields. (no key and no value)
@@ -48,6 +50,7 @@
     * Invalid fields (data type, data length, etc)
     * Boundary Test Cases: greater than maximum value or less than minimum value.
     * User not exist
+    * SQL injection test for input parameters
 
 * Update event api
   * Success case
@@ -56,6 +59,7 @@
     * No start time, use default
     * No end time, use default.
     * Boundary Test data for all fields.
+    * SQL injection test for input parameters
   * Error Case (Should not update event. Return pre-defined error then server works normally. No 5xx error.)
     * Not exist event id
     * User not exist
@@ -66,6 +70,7 @@
     * Invalid fields (data type, data length, etc)
     * Boundary Test Cases: greater than maximum value or less than minimum value.
     * Try to update deleted event.
+    * SQL injection test for input parameters
 
 
 * Delete event api
@@ -76,6 +81,7 @@
     * Not exist event id
     * User not exist
     * Event not belong to user
+    * SQL injection test for input parameters
     
 ## Performance Test
 
@@ -117,3 +123,8 @@ Gradually increase the traffic of incoming loading, monitor the response time an
 * Set the desired traffic a little higher than the system limitation
 * Check if system will recover when loading back to normal (less than the limitation)
 * Check system loading (cpu, memory, queue, etc) when loading back to normal.
+
+## Security Test
+* https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Web_Service_Security_Cheat_Sheet.md
+* https://github.com/OWASP/API-Security/blob/develop/2019/en/dist/owasp-api-security-top-10.pdf
+* https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/REST_Security_Cheat_Sheet.md
