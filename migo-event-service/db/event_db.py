@@ -58,8 +58,8 @@ def update_event(args):
 
     return result
 
-def delete_event(user_id, event_id):
 
+def delete_event(user_id, event_id):
     conn = mysql.connect()
     cursor = conn.cursor()
     cursor.callproc('sp_delete_event', (user_id, event_id))

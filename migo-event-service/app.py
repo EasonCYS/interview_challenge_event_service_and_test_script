@@ -8,6 +8,7 @@ from db import event_db
 app = Flask(__name__)
 api = Api(app)
 
+
 @app.route('/user/<user_id>/get_event_list', methods=['POST'])
 def get_all_event(user_id):
     try:
@@ -31,6 +32,7 @@ def get_all_event(user_id):
 
     except Exception as e:
         return {'error': str(e)}
+
 
 @app.route('/user/<user_id>/event', methods=['POST'])
 def create_event_by_user_id(user_id):
@@ -59,6 +61,7 @@ def create_event_by_user_id(user_id):
         return {'StatusCode': '200'}
     else:
         return {'StatusCode': '400'}
+
 
 @app.route('/user/<user_id>/event/<event_id>', methods=['POST'])
 def update_event(user_id, event_id):
@@ -89,6 +92,7 @@ def update_event(user_id, event_id):
     else:
         return {'StatusCode': '400'}
 
+
 @app.route('/user/<user_id>/event/<event_id>', methods=['DELETE'])
 def delete_event(user_id, event_id):
 
@@ -98,6 +102,7 @@ def delete_event(user_id, event_id):
         return {'StatusCode': '200'}
     else:
         return {'StatusCode': '400'}
+
 
 if __name__ == '__main__':
     app.run(debug=True)
