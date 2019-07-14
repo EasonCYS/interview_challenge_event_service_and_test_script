@@ -64,7 +64,7 @@ https://github.com/EasonCYS/migo_test_eason_cheng/tree/master/database
 * For performance consideration, end_time_range is a required input for select events stored procedure.
 
 
-## Unit Test for Event Service ##
+## Unit Test ##
 https://github.com/EasonCYS/migo_test_eason_cheng/tree/master/migo-event-service/test
 
 * The structure is the same as the source code of service app.
