@@ -14,7 +14,7 @@ def get_all_event(user_id):
         if "SortKey" in request.form:
             sort_key = request.form['SortKey']
         else:
-            sort_key = 'Id'
+            sort_key = 'id'
 
         if "Order" in request.form:
             order = request.form['Order']
