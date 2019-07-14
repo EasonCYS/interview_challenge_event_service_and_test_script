@@ -61,9 +61,14 @@ def test_get_events():
     assert event_result[0]['CategoryId'] == event['category_id']
 
 
-def test_delete_events_by_user_id():
+def test_delete_events():
     user_id = event['user_id']
-    mydb.delete_events_by_user_id(user_id)
+    mydb.insert_event(event)
+
+    event_result_tmp = mydb.get_events(user_id, 'id', 'desc', end_time_range)
+    event_id = event_result_tmp[0]['Id']
+
+    mydb.delete_event(user_id, event_id)
     event_result = mydb.get_events(user_id, 'Id', 'desc', end_time_range)
     assert len(event_result) == 0
 

@@ -89,5 +89,15 @@ def update_event(user_id, event_id):
     else:
         return {'StatusCode': '400'}
 
+@app.route('/user/<user_id>/event/<event_id>', methods=['DELETE'])
+def delete_event(user_id, event_id):
+
+    result = event_db.delete_event(user_id, event_id)
+
+    if result is True:
+        return {'StatusCode': '200'}
+    else:
+        return {'StatusCode': '400'}
+
 if __name__ == '__main__':
     app.run(debug=True)

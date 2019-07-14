@@ -58,6 +58,21 @@ def update_event(args):
 
     return result
 
+def delete_event(user_id, event_id):
+
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.callproc('sp_delete_event', (user_id, event_id))
+    data = cursor.fetchall()
+
+    if len(data) is 0:
+        conn.commit()
+        result = True
+    else:
+        result = False
+
+    return result
+
 
 def get_events(user_id, sort_key, order, end_time_range):
     conn = mysql.connect()

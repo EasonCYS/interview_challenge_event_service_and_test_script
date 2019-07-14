@@ -109,6 +109,18 @@ def test_update_event(client):
     assert event_result[0]['EndTime'] == event_updated['end_time']
     assert event_result[0]['CategoryId'] == event_updated['category_id']
 
+def test_delete_event(client):
+    user_id = event['user_id']
+    mydb.insert_event(event)
+    event_result_tmp = mydb.get_events(user_id, 'id', 'desc', end_time_range)
+    event_id = event_result_tmp[0]['Id']
+
+    rv = client.delete('/user/' + str(event['user_id']) + '/event/' + str(event_id))
+    assert b'200' in rv.data
+
+    event_result = mydb.get_events(user_id, 'id', 'desc', end_time_range)
+    assert len(event_result) == 0
+
 
 def teardown_function():
     user_id = event['user_id']
