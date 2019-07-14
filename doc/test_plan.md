@@ -18,7 +18,7 @@
   * Clean all test data after finished on test case
   * Authentication and authorization if user need to login first.
 
-#### Test Case Spec
+#### Test Spec
 * Get event list api
   * Success case
     * Happy path: select event lists with several events belonged to user.
