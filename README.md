@@ -5,6 +5,7 @@ https://github.com/EasonCYS/migo_test_eason_cheng/tree/master/migo-event-service
 * All the indexes for event table contains "user_id" as 1st layer index and "end_time" as 2nd layer index. 
 * The operation of get event list should contain a EndTimeRange to accelerate the query. 
   * If client didn't input it, the default range would be 24 hours ago.
+* The result of get event stored procedure will be limited as 1000 data. We could consider paging if we need to return more data to client.
   
 ### Get event list: POST /user/<user_id>/get_event_list
 
