@@ -1,5 +1,4 @@
 ## Event Service ##
-https://github.com/EasonCYS/migo_test_eason_cheng/tree/master/migo-event-service
 
 * 4 APIs for user to get, create, update, and delete her/his own event(s).
 * All the indexes for event table contains "user_id" as 1st layer index and "end_time" as 2nd layer index. 
