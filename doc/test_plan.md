@@ -110,7 +110,7 @@ Send required traffic continously for 10 minutes, monitor system indexes.
   * Different loadings estimation of different api operations
   * Consider the peak and sequential api opereation (such as get -> update -> get)
 
-### Stree Test
+### Stress Test
 #### Purpose
 1. To understand the capacity of system.
 1. To understand system behaviour when the traffic exceed its capacity.
